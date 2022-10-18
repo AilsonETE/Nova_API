@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Perfil_Usuario;
 
 class User extends Authenticatable
 {
@@ -45,5 +46,8 @@ class User extends Authenticatable
     public function imovel(){
          return $this->HasMany(Imovel::class); //hasmany tem muitos um usuario tem muitos imoveis
         }
-        
+    
+    public function perfil(){
+        return $this->hasOne(Perfil_Usuario::class);  
+    }
 }

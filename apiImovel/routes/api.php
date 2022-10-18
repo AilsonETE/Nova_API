@@ -12,14 +12,21 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     
 Route::prefix('v1')->namespace('App\Http\Controllers\Api')->group(function(){
+   
     Route::name('imovel')->group(function(){
-
        Route::resource('imovel', 'ImovelController'); #index
-     
+         });
 
-    });
-
-  
-
+      Route::name('usuarios')->group(function(){
+     Route::resource('usuarios', 'UserController'); #index
+        });
+        
+        
+        Route::name('categoria.')->group(function(){
+            Route::get('categoria/{id}/imovel', 'CategoriaControllerr@imovel' );
+           
+            Route::resource('categoria', 'CategoriaController'); #index
+        });
+            
 });
 

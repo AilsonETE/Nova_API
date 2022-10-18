@@ -16,17 +16,17 @@ $this->categoria = $categoria;
 
  public function index()
  {
-     $imovel = $this->imovel->paginate('10');
-     return response()->json($imovel, 200);
+     $categoria = $this->categoria->all();
+     return response()->json($categoria, 200);
  }
 
  public function show($id)
  {
      try {
-         $imovel = $this->imovel->findOrFail($id);
+        $categoria = $this->findOrFail($id);
          return response()->json([
              'data' => [
-                 $imovel
+                $categoria
              ]
          ], 200);
      } catch (\Exception $e) {
@@ -38,7 +38,7 @@ $this->categoria = $categoria;
  {
      $data = $request->all();
      try {
-         $imovel = $this->imovel->create($data);
+         $categoria = $this->categoria->create($data);
          return response()->json([
              'data' => [
                  'msg' => 'Imovel cadastrado com sucesso'
